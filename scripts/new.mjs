@@ -103,6 +103,48 @@ export function slugify(name) {
 }
 
 /**
+ * Sanitize emotional hook for use in meta description
+ * - Converts multiline to single line
+ * - Removes markdown formatting
+ * - Skips prompt-style questions at the beginning
+ * - Escapes quotes for JSX safety
+ * - Truncates to reasonable length
+ */
+export function sanitizeEmotionalHook(hook, maxLength = 160) {
+  if (!hook) return '';
+
+  let cleaned = hook
+    // Remove markdown bold/italic
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/\*([^*]+)\*/g, '$1')
+    .replace(/__([^_]+)__/g, '$1')
+    .replace(/_([^_]+)_/g, '$1')
+    // Remove markdown headers within content
+    .replace(/^#+\s*/gm, '')
+    // Convert newlines to spaces
+    .replace(/\n+/g, ' ')
+    // Collapse multiple spaces
+    .replace(/\s+/g, ' ')
+    // Remove leading/trailing whitespace
+    .trim();
+
+  // Skip leading questions like "How should users FEEL?" - start from actual content
+  const questionMatch = cleaned.match(/^[^.!?]+\?\s*/);
+  if (questionMatch) {
+    cleaned = cleaned.slice(questionMatch[0].length);
+  }
+
+  return cleaned
+    // Escape single quotes for JSX
+    .replace(/'/g, "\\'")
+    // Truncate to max length, break at word boundary
+    .substring(0, maxLength)
+    .replace(/\s+\S*$/, '')
+    // Ensure no trailing punctuation fragments
+    .replace(/[,;:\s]+$/, '');
+}
+
+/**
  * Copy directory recursively with placeholder replacement
  */
 function copyDirWithReplacements(src, dest, replacements) {
@@ -168,10 +210,11 @@ export async function scaffoldMvp(ideaPath, outputDir = null) {
   }
 
   // Define placeholder replacements
+  const sanitizedHook = sanitizeEmotionalHook(idea.emotionalHook) || `Making ${idea.name} feel amazing.`;
   const replacements = {
     '{{MVP_NAME}}': idea.name,
     '{{PRODUCT_ID}}': productId,
-    '{{EMOTIONAL_HOOK}}': idea.emotionalHook || `Making ${idea.name} feel amazing.`,
+    '{{EMOTIONAL_HOOK}}': sanitizedHook,
     '{{PROBLEM}}': idea.problem || '',
     '{{SOLUTION}}': idea.solution || '',
     '{{TARGET_USER}}': idea.targetUser || '',
