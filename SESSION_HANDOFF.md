@@ -15,19 +15,21 @@ Lives at `/Users/P/dev/forge/` (sibling to AI-factory).
 - Pipelineabuser is fast but low quality (no gates, no emotional validation)
 - Forge = AI Factory quality in Pipelineabuser timeframe
 
-## Current Status: Phase 5 COMPLETE, Phase 6 Started
+## Current Status: Phase 6 COMPLETE - Two MVPs Shipped!
 
-**Gratitude Journal shipped:** https://gratitude-journal-nu.vercel.app
+**Live MVPs:**
+| # | MVP | URL | Emotional Score |
+|---|-----|-----|-----------------|
+| 5 | Gratitude Journal | https://gratitude-journal-nu.vercel.app | 100% |
+| 6 | Mood Check | https://mood-check-dusky.vercel.app | 100% |
 
-Validated the full Forge workflow:
-1. `forge new ideas/gratitude-journal.md` - scaffolded MVP
-2. Built features (landing page, AI celebrate API)
-3. `forge validate` - all gates passed (100% emotional)
-4. `forge ship` - deployed to Vercel
-
-**Phase 6 progress:**
+**Phase 6 accomplishments:**
 - [x] Git repository initialized
 - [x] Multiline emotional hook sanitization fixed
+- [x] MVP #6 (Mood Check) shipped with 100% emotional score
+- [x] Supabase persistence added to gratitude-journal
+- [x] Template TypeScript issues fixed
+- [x] Pushed to GitHub: https://github.com/AI-MVP-Factory/forge
 
 ## What's Done (Complete)
 
@@ -63,7 +65,8 @@ Validated the full Forge workflow:
 | 2 | Recipe Genie | https://recipe-genie-cyan.vercel.app | 96% |
 | 3 | Focus Timer | https://focus-timer-sigma-five.vercel.app | 100% |
 | 4 | Vibe Check | https://vibe-check-neon-alpha.vercel.app | 100% |
-| **5** | **Gratitude Journal** | **https://gratitude-journal-nu.vercel.app** | **100%** |
+| 5 | Gratitude Journal | https://gratitude-journal-nu.vercel.app | 100% |
+| **6** | **Mood Check** | **https://mood-check-dusky.vercel.app** | **100%** |
 
 ## Key Commands
 
