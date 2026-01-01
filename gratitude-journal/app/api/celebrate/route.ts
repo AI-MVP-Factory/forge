@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { createClient } from '@/lib/supabase/server';
 
 const SYSTEM_PROMPT = `You are a warm, supportive companion celebrating someone's gratitude.
 
@@ -45,19 +46,34 @@ export async function POST(request: NextRequest) {
 
     // Try AI response first
     const apiKey = process.env.OPENROUTER_API_KEY || process.env.ANTHROPIC_API_KEY;
+    let message: string;
 
     if (apiKey) {
       try {
-        const aiResponse = await generateAIResponse(gratitude, apiKey);
-        return NextResponse.json({ message: aiResponse });
+        message = await generateAIResponse(gratitude, apiKey);
       } catch (error) {
         console.error('AI generation failed, using fallback:', error);
+        message = FALLBACK_RESPONSES[Math.floor(Math.random() * FALLBACK_RESPONSES.length)];
       }
+    } else {
+      // Fallback to pre-written responses
+      message = FALLBACK_RESPONSES[Math.floor(Math.random() * FALLBACK_RESPONSES.length)];
     }
 
-    // Fallback to pre-written responses
-    const fallback = FALLBACK_RESPONSES[Math.floor(Math.random() * FALLBACK_RESPONSES.length)];
-    return NextResponse.json({ message: fallback });
+    // Save to Supabase (best effort - don't block response)
+    try {
+      const supabase = await createClient();
+      await supabase.from('gratitude_entries').insert({
+        content: gratitude,
+        ai_response: message,
+        user_id: null, // Anonymous for now
+      });
+    } catch (dbError) {
+      console.error('Failed to save entry:', dbError);
+      // Continue anyway - don't block the user experience
+    }
+
+    return NextResponse.json({ message });
 
   } catch (error) {
     console.error('Error processing gratitude:', error);
