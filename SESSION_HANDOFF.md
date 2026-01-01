@@ -15,20 +15,34 @@ Lives at `/Users/P/dev/forge/` (sibling to AI-factory).
 - Pipelineabuser is fast but low quality (no gates, no emotional validation)
 - Forge = AI Factory quality in Pipelineabuser timeframe
 
-## Current Status: Phase 7 COMPLETE - Three MVPs Shipped!
+## Current Status: Phase 8 IN PROGRESS - Expo Mobile Port
 
-**Live MVPs:**
+**Strategic Pivot:** Web demos are not real products. Real success = iPhone + Android apps with monetization.
+
+**Forge V2 Requirements:**
+- Mobile apps (Expo) ← IN PROGRESS
+- Monetization (RevenueCat)
+- Beautiful design (animations, polish)
+- Viral mechanics (sharing, streaks)
+
+**Phase 8 Progress - Expo Port:**
+- [x] Self-Care Checklist Expo project created (~850 lines)
+- [x] Design system with tokens (colors, spacing, typography)
+- [x] Animated components (ChecklistItem, CelebrationCard, ProgressBadge)
+- [x] Haptic feedback integration
+- [x] Web version bundles successfully
+- [ ] Test on iOS Simulator
+- [ ] Add RevenueCat for monetization
+- [ ] Submit to App Store
+
+**Live MVPs (Web):**
 | # | MVP | URL | Emotional Score |
 |---|-----|-----|-----------------|
 | 5 | Gratitude Journal | https://gratitude-journal-nu.vercel.app | 100% |
 | 6 | Mood Check | https://mood-check-dusky.vercel.app | 100% |
 | 7 | Self-Care Checklist | https://self-care-checklist.vercel.app | 98% |
 
-**Phase 7 accomplishments:**
-- [x] MVP #7 (Self-Care Checklist) shipped with 98% emotional score
-- [x] 7 self-care items with AI celebration for each
-- [x] Milestone celebrations at 3, 5, and 7 items
-- [x] Pushed to GitHub: https://github.com/AI-MVP-Factory/forge
+**GitHub:** https://github.com/AI-MVP-Factory/forge
 
 ## What's Done (Complete)
 
@@ -51,10 +65,17 @@ Lives at `/Users/P/dev/forge/` (sibling to AI-factory).
 │   └── next-app/       ✅ COMPLETE - passes all gates
 ├── ideas/
 │   └── gratitude-journal.md  ✅ First idea
-└── gratitude-journal/  ✅ SHIPPED - MVP #5
+├── gratitude-journal/  ✅ SHIPPED - MVP #5
+├── mood-check/         ✅ SHIPPED - MVP #6
+├── self-care-checklist/ ✅ SHIPPED - MVP #7 (web)
+└── self-care-checklist-expo/ 🚧 IN PROGRESS - Expo port
+    ├── app/            # Expo Router screens
+    ├── components/     # Animated UI components
+    ├── design/         # Design tokens
+    └── lib/            # Haptics, celebrate API
 ```
 
-**Total:** ~2,100 lines (vs AI Factory's 28,500 = 14x leaner!)
+**Total:** ~2,950 lines (web + Expo) - still 10x leaner than AI Factory!
 
 ## Live MVPs
 
@@ -94,10 +115,11 @@ node gates/independence.mjs /path/to/mvp
 
 ## What's Next
 
-1. **Add more MVPs** - Continue shipping to validate consistency
-2. **Improve scaffold** - Fix multiline emotional hook handling in layout.tsx
-3. **Supabase integration** - Add database storage for gratitude entries
-4. **PostHog/Sentry** - Add monitoring to deployed MVPs
+1. **Test Expo on iOS Simulator** - Validate native feel + haptics
+2. **Add RevenueCat** - Monetization ($4.99/mo or $29.99/yr)
+3. **Polish UI** - Animations, confetti on completion, streak tracking
+4. **Submit to App Store** - TestFlight first, then production
+5. **Extract Expo template** - Once validated, make it the new forge template
 
 ## Success Metrics Achieved
 

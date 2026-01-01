@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "Self-Care Checklist",
+    "slug": "self-care-checklist",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "selfcare",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FFF1F2"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.forge.selfcarechecklist"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFF1F2"
+      },
+      "package": "com.forge.selfcarechecklist"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
