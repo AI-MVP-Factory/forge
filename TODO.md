@@ -1,101 +1,88 @@
 # Forge Implementation TODO
 
-> **For session handoff:** Start here. This tracks what's done and what's next.
+> **Status:** Phase 8 - Mobile-First Pivot
 
-## Status: Phase 5 COMPLETE (Validation Done)
+## Completed Phases
 
-### Completed
+### Phase 1-5: Foundation (COMPLETE)
+- [x] Core infrastructure (VISION, SPEC, CLAUDE, README, TODO)
+- [x] 3 gates: emotional (541 lines), security (349 lines), independence (276 lines)
+- [x] CLI: forge.mjs (240 lines), new.mjs (165 lines)
+- [x] Next.js template (471 lines, passes all gates)
 
-- [x] Create directory structure (`/Users/P/dev/forge/`)
-- [x] Write VISION.md (philosophy, principles)
-- [x] Write SPEC.md (architecture, components)
-- [x] Write CLAUDE.md (session context)
-- [x] Write README.md (quick start)
-- [x] Write TODO.md (this file)
-- [x] Create `templates/idea.md` - Idea intake template
-- [x] Create `scripts/forge.mjs` - CLI with validate/ship/status commands
-- [x] Create `gates/emotional.mjs` - **COMPLETE** (541 lines)
-  - 96% threshold enforced
-  - 5 dimensions: warmth, empathy, celebration, validation, encouragement
-  - Scans prompts/, src/app/, app/api/ and more
-- [x] Create `gates/security.mjs` - **COMPLETE** (349 lines)
-  - RLS policy detection
-  - Hardcoded secrets scanning
-  - Service key exposure check
-  - Insecure pattern detection
-- [x] Create `gates/independence.mjs` - **COMPLETE** (276 lines)
-  - Product ID validation
-  - User content check (no factory mentions)
-  - Cross-MVP reference detection
-  - Internal leakage detection
-- [x] Create `templates/next-app/` - **COMPLETE** (471 lines)
-  - Next.js 14 App Router
-  - Supabase client configuration (browser + server + middleware)
-  - Tailwind CSS config
-  - PostHog provider stub
-  - Sentry error tracking stub
-  - Environment variable template
-  - Prompt template (passes emotional gate 100%)
-- [x] Create `scripts/new.mjs` - **COMPLETE** (scaffold flow)
-  - Parses idea.md files
-  - Copies template with placeholder replacement
-  - Scaffolded MVPs pass all gates out of the box
+### Phase 6-7: Web MVPs (COMPLETE)
+- [x] MVP #5: Gratitude Journal - 100% emotional
+- [x] MVP #6: Mood Check - 100% emotional
+- [x] MVP #7: Self-Care Checklist - 98% emotional
+- [x] GitHub repo: https://github.com/AI-MVP-Factory/forge
+- [x] Supabase persistence for gratitude-journal
 
-### Test Results (Scaffolded MVP)
-```
-Emotional:    100% PASS (all dimensions 100%)
-Security:     PASS (0 blockers)
-Independence: PASS (0 blockers)
-```
+### Phase 8: Expo Port (IN PROGRESS)
+- [x] Self-Care Checklist Expo project created (~850 lines)
+- [x] Design system with tokens (colors, spacing, typography)
+- [x] Animated components (ChecklistItem, CelebrationCard, ProgressBadge)
+- [x] Haptic feedback integration
+- [x] Web version bundles successfully
+- [ ] Test on iOS Simulator
+- [ ] Test on Android Emulator
 
 ---
 
-## Phase 5 - Validation (COMPLETE)
+## Current Phase: 8 - Mobile Foundation
 
-- [x] Ship MVP #5 using Forge → **https://gratitude-journal-nu.vercel.app**
-- [x] Measure actual time → **~45 min** (target was 4 hours!)
-- [x] Validate emotional score → **100%** (target was 96%+)
-- [x] Compare to AI Factory → **14x leaner** (2,100 vs 28,500 lines)
-- [x] Document learnings → See SESSION_HANDOFF.md
+### 8.1 Expo Validation
+- [ ] Run on iOS Simulator - verify haptics feel premium
+- [ ] Run on Android Emulator - verify cross-platform
+- [ ] Fix any platform-specific issues
+- [ ] Create proper app icons (not placeholders)
 
-### Phase 5 Results Summary
+### 8.2 Monetization (RevenueCat)
+- [ ] Create RevenueCat account
+- [ ] Set up product: Self-Care Premium ($4.99/mo or $29.99/yr)
+- [ ] Integrate RevenueCat SDK
+- [ ] Create paywall UI
+- [ ] Free tier: 3 items, Premium: all 7 + history
+- [ ] Test purchase flow (sandbox)
 
-| Metric | Target | Actual |
-|--------|--------|--------|
-| Time to ship | 4 hours | ~45 min |
-| Emotional score | 96%+ | 100% |
-| Template lines | <500 | 471 |
-| Total Forge lines | - | ~2,100 |
+### 8.3 Polish
+- [ ] Confetti animation on 7/7 completion
+- [ ] Streak tracking (consecutive days)
+- [ ] Dark mode support
+- [ ] Custom app icon (rose theme)
+- [ ] Proper splash screen
+
+### 8.4 App Store Submission
+- [ ] Create Apple Developer account ($99/yr)
+- [ ] Create Google Play Developer account ($25 one-time)
+- [ ] EAS Build configuration
+- [ ] App Store screenshots
+- [ ] App Store description with emotional copy
+- [ ] Submit to TestFlight
+- [ ] Submit to Play Store internal testing
 
 ---
 
-## Phase 6 - Hardening (NEXT)
+## Future Phases
 
-- [x] Initialize git repository
-- [x] Fix multiline emotional hook sanitization in scaffold
-- [ ] Add more MVPs to validate consistency
-- [ ] Add Supabase persistence to gratitude-journal
-- [ ] Add PostHog/Sentry monitoring to deployed MVPs
-- [ ] Create GitHub repo and push
+### Phase 9: Viral Mechanics
+- [ ] Share achievements ("I completed 7 self-care items!")
+- [ ] Social cards for sharing
+- [ ] Deep linking
+- [ ] Referral system (invite friend, get premium days)
+- [ ] Streak sharing
 
----
+### Phase 10: Extract Template
+- [ ] Generalize Expo project as template
+- [ ] Add monetization gate
+- [ ] Add beauty gate
+- [ ] Add virality gate
+- [ ] Update forge.mjs for mobile workflow
+- [ ] Document new process
 
-## Key Files Reference
-
-| File | Purpose | Status |
-|------|---------|--------|
-| `VISION.md` | Philosophy | Done |
-| `SPEC.md` | Architecture | Done |
-| `CLAUDE.md` | Session context | Done |
-| `README.md` | Quick start | Done |
-| `TODO.md` | This file | Done |
-| `scripts/forge.mjs` | Main CLI | **Done** |
-| `scripts/new.mjs` | Scaffold command | **Done** |
-| `gates/emotional.mjs` | Emotional gate | **Done** |
-| `gates/security.mjs` | Security gate | **Done** |
-| `gates/independence.mjs` | Independence gate | **Done** |
-| `templates/idea.md` | Idea template | Done |
-| `templates/next-app/` | Next.js scaffold | **Done** |
+### Phase 11: Scale
+- [ ] Port other MVPs to Expo
+- [ ] Launch on Product Hunt
+- [ ] Target: $1,000 MRR across portfolio
 
 ---
 
@@ -109,26 +96,23 @@ Independence: PASS (0 blockers)
 | `scripts/forge.mjs` | 240 |
 | `scripts/new.mjs` | 165 |
 | `templates/next-app/` | 471 |
-| **Total** | **~2,042** |
+| `self-care-checklist-expo/` | ~850 |
+| **Total** | **~2,892** |
 
-Compare to AI Factory: 28,500 lines (14x more!)
+Compare to AI Factory: 28,500 lines (10x leaner!)
 
 ---
 
-## Context for Next Session
+## Success Metrics
 
-**What was accomplished:**
-- All 3 gates fully implemented and tested
-- Next.js template created (471 lines, passes all gates)
-- `forge new` command implemented (parses idea files, scaffolds projects)
-- Scaffolded projects pass all gates out of the box (100% emotional score!)
-
-**What needs to happen next:**
-1. Ship MVP #5 using Forge (real validation)
-2. Time the workflow (target: 4 hours idea-to-production)
-3. Document learnings
-
-**The template is the killer feature:**
-- Developers start with 100% emotional score
-- All gates pass before writing a single line of code
-- Focus is on building features, not fighting infrastructure
+| Phase | Metric | Target | Status |
+|-------|--------|--------|--------|
+| 1-5 | Gates working | 3/3 | ✅ |
+| 6-7 | MVPs shipped | 3+ | ✅ (7) |
+| 6-7 | Emotional score | 96%+ | ✅ (99% avg) |
+| 8 | iOS app running | - | 🚧 |
+| 8 | Android app running | - | 🚧 |
+| 9 | Payment working | - | ⏳ |
+| 10 | App Store live | - | ⏳ |
+| 11 | First paying user | - | ⏳ |
+| 11 | $100 MRR | - | ⏳ |
